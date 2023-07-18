@@ -26,16 +26,21 @@ namespace Assignment9
                 string passWord = Console.ReadLine();
                 Console.WriteLine("Enter the Email Id");
                 string email = Console.ReadLine();
-                if(name.Length>6 && passWord.Length > 8)
+                if(name.Length<6)
+                {
+                    throw new ValidationException("The length of the name should be minimum 6");
+                }
+                else if (passWord.Length < 8)
+                {
+                    throw new ValidationException("The length of the password should be minimum 8");
+                }
+                else 
                 {
                     Console.WriteLine("User Registration is Successfull");
                     Console.WriteLine(name);
                     Console.WriteLine(email);
                     Console.WriteLine(passWord);
-                }
-                else
-                {
-                    throw new ValidationException("The given input doesn't have required properties to validate");
+                    
                 }
             }
             catch(ValidationException ve)
